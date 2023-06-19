@@ -22,3 +22,17 @@
         name: apache2
         state: present
         update_cache: yes
+
+---  
+- name: hello ansible
+  hosts: all
+  become: yes
+  tasks:
+    - name: update package and install tree
+      ansible.builtin.apt:
+        name: tree
+        state: present
+        update_cache: yes 
+
+---
+

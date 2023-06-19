@@ -1,0 +1,21 @@
+---
+- name: installing and running gameoflife
+  hosts: all
+  become: yes
+  tasks:
+    - name: update packages and install openjdk-8-jdk tomcat9 -y
+      ansible.builtin.apt:
+        - name: tomcat9
+          state: present
+          update_cache: true
+    - name: install gameoflife
+      ansible.builtin.apt::
+        - name: gameoflife
+          state:: present
+          update_cache: true
+          deb : cd/tmp
+    - name: copy the gameoflife
+      ansible.builtin.copy:
+          src: gameoflife.war
+          dest: /var/lib/tomcat9/webapps/gameoflife.war
+          force_apt_get : https://referenceapplicationskhaja.s3.us-west-2.amazonaws.com/gameoflife.war

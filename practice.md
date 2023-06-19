@@ -149,7 +149,133 @@ playbooks are YAMl files.
 
 ### Day4 Team work on muiltiple Servers
 
-* Admin group : Users combination group
+* Admin group : Users will be added to be admin group
 
-* Service account : 
+* Service account : Account is given to admin which is manage and all of the users login and do the changes over user system
+
+
+
+* user name and password is not a good idea
+
+### Ansible installation 
+
+steps
+
+```
+* Create 2 instances  and name as the--- Ansible controll  & node1
+* check python :python3 --version  in both machines
+* Adding user in both instaces: sudo adduser shiva--username in both machines
+* Giving sudoers permissin to users: sudo visudo in both machines
+* Chanange pw authentication as Yes : sudo vi /etc/ssh/sshd_cofig in both machines
+* Restart sshd config :  sudo systemctl sshd restart in both machines (or ) sudo service sshd restart
+* switch user : su shiva in both machines
+* ssh-kegen in ansible controll node: ssh-keygen
+* connect node1 using private ip node:  ssh-copy-id shiva@10.160.0.4
+* check both machines sudo permissions : sudo apt update
+* connect directly to user using ssh ip address and name :ssh 10.160.0.4 & ssh node1
+* install ansible: in controll node
+* sudo apt update
+* sudo apt install software-properties-common -y
+* sudo add-apt-repository --yes --update ppa:ansible/ansible
+* sudo apt install ansible -y
+* check ansible version
+* shiva@asnible:~$ ansible --version
+* ansible 2.10.8
+```
+
+``` 
+vi hosts : edit ip adress and names 
+check connectivity command: 'ansible -m ping -i hosts all'
+ssh-copy-id shiva@localhost
+
+
+Result--
+
+shiva@asnible:~$ ansible -m ping -i hosts all
+10.160.0.4 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+
+}
+
+```
+Desired state :
+
+adhoc commands:
+playbooks:
+
+sample playbook:
+
+---
+- name: hello ansible
+  hosts: all
+  become: yes
+  tasks:
+    - name: update package and install tree
+      apt:
+        name: tree
+        state: present
+        update_cache: yes
+---
+
+check tree in node 1-- 
+
+Activity1:
+----------
+Installation apache server
+
+* list down manual steps
+  - for eachstep find the module express steps
+  - 
+  ```
+  sudo apt update
+  sudp apt install apache2 -y
+  ```
+  verify the installation "http://public-ip"
+
+* then write the ansible playbook
+
+- name : It means about the inforamtion doing work
+  host: Ip connectvity selection
+  become: what ever using in ansible using sudo permissions
+  tasks: what u want too do
+
+```yaml
+---
+- name: install apache server
+  hosts: all
+  become: yes
+  tasks:
+    - name: install apache server
+      ansible.builtin.apt:
+        name: apache2
+        update_cache : yes
+        state: present
+---      
+```
+ vi playbooks/apach2.yaml
+ ansible-playbook -i inventory/hosts playbooks/apach2.yaml \
+
+ observed the changes 
+
+```
+```
+### install Lamp server 
+--- Manual steps
+```
+sudo apt update\
+sudo apt install apache2 -y
+sudo apt install php libapache2-mod-php php-mysql -y
+sudo -i
+ls
+sudo systemctl restart apache2
+history 
+```
+### play book for lamp server...
+
+---
+
 
