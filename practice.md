@@ -274,8 +274,37 @@ ls
 sudo systemctl restart apache2
 history 
 ```
-### play book for lamp server...
+ ### play book for lamp server...
 
+```yaml
 ---
+- name: install lamp server on ubuntu
+  hosts: all
+  become: true
+  tasks:
+    - name: install apache2 on ubuntu
+      ansible.builtin.apt:
+        name: apache2
+        update_cache: true
+        state: absent
+    - name: install php packages
+      ansible.builtin.apt:
+        name:
+          - php
+          - libapache2-mod-php
+          - php-mysql
+        update_cache: true
+        state: present
+    - name: copy the info.php page
+      ansible.builtin.copy:
+        src: info.php
+        dest: /var/www/html/info.php
+    - name: restart apache2
+      ansible.builtin.systemd:
+        name: apache2
+        state: restarted
+
+```
+
 
 
