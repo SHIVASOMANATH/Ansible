@@ -1,5 +1,5 @@
 ---
-  - name: install lamp server on ubuntu 
+  - name: install lamp server on ubuntu
     hosts: all
     become: yes
     tasks:
@@ -20,12 +20,11 @@
           - restart apache2
       - name: create info.php page
         ansible.builtin.copy:
-          content: '<?php phpinfo(); ?>' 
-          dest: /var/www/html/info.php 
+          content: '<?php phpinfo(); ?>'
+          dest: /var/www/html/info.php
         notify:
           - restart apache2
-    handlers:  
+    handlers:
       - name: restart apache service
         ansible.builtin.systemd:
           name: apache2
-        
