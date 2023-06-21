@@ -340,4 +340,37 @@ sudo systemctl restart httpd
 ```
 --- playbook for lamp in redhat
 
+```yaml
+---
+- name: install lamp server on redhat
+  hosts: all
+  become: true
+  tasks:
+    - name: install httpd on server
+      ansible.builtin.yum:
+        name: httpd
+        update_cache: true
+        state: present
+    - name: start httpd service and enable
+      ansible.builtin.systemd:
+        name: httpd
+        enabled: true
+        state: started
+    - name: install php server
+      ansible.builtin.yum:
+        name: php
+        update_cache: true
+        state: present
+    - name: start httpd service and enable
+      ansible.builtin.systemd:
+        name: httpd
+        state: started 
+    - name: create info.php page
+      ansible.builtin.copy:
+        content: '<?php phpinfo(); ?>' 
+        dest: /var/www/html/info.php
+    - name: restart httpd service 
+      ansible.builtin.systemd:
+        name: httpd
+        state: restarted 
 ```
