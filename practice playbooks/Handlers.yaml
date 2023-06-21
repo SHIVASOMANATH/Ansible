@@ -5,9 +5,9 @@
     tasks:
       - name: install apache server
         ansible.builtin.apt:
-          - name: apache2
-            update_cache: true
-            state: present
+          name: apache2
+          update_cache: true
+          state: present
         notify:
           - restart apache2
       - name: install php packages
@@ -30,5 +30,4 @@
       - name: restart apache service
         ansible.builtin.systemd:
         name: apache2
-        state: restarted     
         
