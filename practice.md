@@ -374,3 +374,46 @@ sudo systemctl restart httpd
         name: httpd
         state: restarted 
 ```
+>>> ansible-playbook -i inventory/hosts --syntax-check playbooks/lamp.yaml 
+
+### Handlers:
+
+--- notify:
+     before execution of handlers
+    Handelers are used overwrite everytime restart excecution with out down time
+
+```yaml
+---
+  - name: install lamp server on ubuntu 22.04
+    hosts: all
+    become: yes
+    tasks:
+      - name: install apache server
+        ansible.builtin.apt:
+          - name: apache2
+            update_cache: true
+            state: present
+        notify:
+          - restart apache2
+      - name: install php packages
+        ansible.builtin.apt:
+          name:
+            - php
+            - libapache2-mod-php
+            - php-mysql
+          update_cache: true
+          state: present
+        notify:
+          - restart apache2
+      - name: create info.php page
+        ansible.builltn.copy:
+          content: '<?php phpinfo(); ?>' 
+          dest: /var/www/html/info.php 
+        notify:
+          - restart apache2
+        handlers:  
+      - name: restart apache service
+        ansible.builtin.systemd:
+        name: apache2
+        state: restarted     
+        
