@@ -309,6 +309,17 @@ history
 ### Manual steps for Lamp in redhat
 
 ```
+sudo yum install httpd -y
+sudo systemctl enable httpd
+sudo yum install php -y
+sudo -i 
+sudo systemctl start httpd
+echo '<?php phpinfo(); ?>' > /var/www/html/info.php
+exit
+sudo systemctl restart httpd
+```
+ >>> install ansible in redhat
+```
 *  Create 2 instances  and name as the--- Ansible controll  & node1
 *  check python :python3 --version  in both machines
 *  Adding user in both instaces: sudo adduser shiva1--username in both machines 
@@ -326,4 +337,7 @@ history
 *  python3 -m pip -V
 *  python3 -m pip install --user ansible
 *  ansible --version
----
+```
+--- playbook for lamp in redhat
+
+```
