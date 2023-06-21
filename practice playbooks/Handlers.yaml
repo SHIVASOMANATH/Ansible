@@ -21,7 +21,7 @@
         notify:
           - restart apache2
       - name: create info.php page
-        ansible.builltn.copy:
+        ansible.builtin.copy:
           content: '<?php phpinfo(); ?>' 
           dest: /var/www/html/info.php 
         notify:
