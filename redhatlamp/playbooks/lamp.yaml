@@ -15,9 +15,9 @@
         state: started
     - name: install php server
       ansible.builtin.yum:
-      name: php
-      update_cache: true
-      state: present
+        name: php
+        update_cache: true
+        state: present
     - name: start httpd service and enable
       ansible.builtin.systemd:
         name: httpd
