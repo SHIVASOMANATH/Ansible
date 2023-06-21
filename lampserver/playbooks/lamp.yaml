@@ -7,7 +7,7 @@
       ansible.builtin.apt:
         name: apache2
         update_cache: true
-        state: absent
+        state: present
     - name: install php packages
       ansible.builtin.apt:
         name:
