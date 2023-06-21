@@ -276,6 +276,8 @@ history
 ```
  ### play book for lamp server...
 
+ skip mysql server:
+
 ```yaml
 ---
 - name: install lamp server on ubuntu
@@ -303,8 +305,25 @@ history
       ansible.builtin.systemd:
         name: apache2
         state: restarted
+```
+### Manual steps for Lamp in redhat
 
 ```
-
-
-
+*  Create 2 instances  and name as the--- Ansible controll  & node1
+*  check python :python3 --version  in both machines
+*  Adding user in both instaces: sudo adduser shiva1--username in both machines 
+*  sudo useradd shiva1
+*  cat /etc/passwd
+*  sudo passwd shiva1
+*  Giving sudoers permissin to users: sudo visudo in both machines
+*  Chanange pw authentication as Yes : sudo vi /etc/ssh/sshd_cofig in both machines
+*  Restart sshd config : sudo systemctl sshd restart in both machines (or ) sudo service sshd restart
+*  switch user : su shiva1 in both machines
+*  ssh-kegen in ansible controll node: ssh-keygen
+*  connect node1 using private ip node:  ssh-copy-id shiva@10.160.0.4
+*  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+*  python3 get-pip.py --user
+*  python3 -m pip -V
+*  python3 -m pip install --user ansible
+*  ansible --version
+---
