@@ -10,3 +10,6 @@
             - openjdk-17-jre
           update_cache: yes
           state: present  
+        notify:
+          - restart apache2
+    handlers:
