@@ -443,25 +443,25 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 * java -version
 * history
 ```
-Play book for Java17
+*   Play book for Java17
+-------------------------
 ```yaml
 ---
   - name: java installation on ubuntu 22.04
     hosts: all
     become: true
     tasks:
-      - name: update update
-        ansible.builtin.apt:
-          name: ubuntu
-          upgrade: yes
-          update_cache: yes
-          state: present
       - name: install openjdk-17-jdk openjdk-17-jre packages
         ansible.builtin.apt:
           name: 
             - openjdk-17-jdk
             - openjdk-17-jre
           update_cache: yes
-          state: present          
-        
-        
+          state: present  
+```
+#### FACTS 
+----------
+```
+ansible -m 'setup' -i '172.31.13.7, ' all 
+
+```

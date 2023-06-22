@@ -15,7 +15,6 @@
 - name: install apache2
   hosts: all
   become: yes
-
   tasks:
     - name: install apt update & install apt install apache2
       apt:
