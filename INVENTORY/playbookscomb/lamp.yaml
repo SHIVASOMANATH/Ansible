@@ -1,26 +1,30 @@
 ---
-- name: install lamp server on ubuntu
-  hosts: all
-  become: true
-  tasks:
-    - name: install apache2 on ubuntu
-      ansible.builtin.apt:
-        name: apache2
-        update_cache: true
-        state: present
-    - name: install php packages
-      ansible.builtin.apt:
-        name:
-          - php
-          - libapache2-mod-php
-          - php-mysql
-        update_cache: true
-        state: present
-    - name: copy the info.php page
-      ansible.builtin.copy:
-        src: info.php
-        dest: /var/www/html/info.php
-    - name: restart apache2
-      ansible.builtin.systemd:
-        name: apache2
-        state: restarted
+  - name: install lamp server on ubuntu
+    hosts: all
+    become: yes
+    tasks:
+      - name: install apache server
+        ansible.builtin.apt:
+          name: apache2
+          update_cache: true
+          state: present
+      - name: install php packages
+        ansible.builtin.apt:
+          name:
+            - php
+            - libapache2-mod-php
+            - php-mysql
+          update_cache: true
+          state: present
+        notify:
+          - restart apache2
+      - name: create info.php page
+        ansible.builtin.copy:
+          content: '<?php phpinfo(); ?>'
+          dest: /var/www/html/info.php
+        notify:
+          - restart apache2
+    handlers:
+      - name: restart apache service
+        ansible.builtin.systemd:
+          name: apache2

@@ -13,20 +13,28 @@
         name: httpd
         enabled: true
         state: started
+      notify:
+        - restart apache2
     - name: install php server
       ansible.builtin.yum:
         name: php
         update_cache: true
         state: present
+      notify:
+        - restart apache2
     - name: start httpd service and enable
       ansible.builtin.systemd:
         name: httpd
         state: started 
+      notify:
+        - restart apache2
     - name: create info.php page
       ansible.builtin.copy:
         content: '<?php phpinfo(); ?>' 
         dest: /var/www/html/info.php
+      notify:
+        - restart apache2
+  handlers:      
     - name: restart httpd service 
       ansible.builtin.systemd:
         name: httpd
-        state: restarted 
