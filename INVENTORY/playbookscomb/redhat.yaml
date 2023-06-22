@@ -1,6 +1,6 @@
 ---
 - name: install lamp server on redhat
-  hosts: all
+  hosts: redhat
   become: true
   tasks:
     - name: install httpd on server
