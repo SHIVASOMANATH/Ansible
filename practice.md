@@ -208,7 +208,7 @@ adhoc commands:
 playbooks:
 
 sample playbook:
-
+```yaml
 ---
 - name: hello ansible
   hosts: all
@@ -219,8 +219,7 @@ sample playbook:
         name: tree
         state: present
         update_cache: yes
----
-
+```
 check tree in node 1-- 
 
 Activity1:
@@ -256,14 +255,14 @@ Installation apache server
         state: present
 ---      
 ```
+```
  vi playbooks/apach2.yaml
  ansible-playbook -i inventory/hosts playbooks/apach2.yaml \
-
- observed the changes 
-
 ```
-```
+* observed the changes 
+
 ### install Lamp server 
+-----------------------
 --- Manual steps
 ```
 sudo apt update\
@@ -275,6 +274,7 @@ sudo systemctl restart apache2
 history 
 ```
  ### play book for lamp server...
+ -------------------------------
 
  skip mysql server:
 
@@ -306,7 +306,8 @@ history
         name: apache2
         state: restarted
 ```
-### Manual steps for Lamp in redhat
+### Manual steps for Lamp in redhat:
+-----------------------------------
 
 ```
 sudo yum install httpd -y
@@ -319,6 +320,7 @@ exit
 sudo systemctl restart httpd
 ```
  >>> install ansible in redhat
+ ------------------------------
 ```
 *  Create 2 instances  and name as the--- Ansible controll  & node1
 *  check python :python3 --version  in both machines
@@ -339,6 +341,7 @@ sudo systemctl restart httpd
 *  ansible --version
 ```
 --- playbook for lamp in redhat
+-------------------------------
 
 ```yaml
 ---
@@ -374,8 +377,8 @@ sudo systemctl restart httpd
         name: httpd
         state: restarted 
 ```
->>> ansible-playbook -i inventory/hosts --syntax-check playbooks/lamp.yaml 
-
+' ansible-playbook -i inventory/hosts 
+--syntax-check playbooks/lamp.yaml '
 ### Handlers:
 
 --- notify:
@@ -420,8 +423,17 @@ Restart apache several time issue cleared
 
 ### INVERNTORY ...
 ------------------
-* create inventory & inverntory.yaml files
-* ini formate & yaml formate
+* create inventory & ini files formate 
+```
+ansible-playbook -i inventory/hosts.yaml playbookscomb/lamp --list-host
+ansible-playbook -i inventory/hosts.yaml playbookscomb/lamp
+```
+* INI formate &  & inverntory.yaml files formate
+
+```
+ansible-playbook -i inventory/hosts playbookscomb/lamp --list-host
+ansible-playbook -i inventory/hosts playbookscomb/lamp
+```
 
 
 
