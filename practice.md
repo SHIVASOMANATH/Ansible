@@ -464,4 +464,5 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 ```
 ansible -m 'setup' -i '172.31.13.7, ' all 
 
+ram
 ```
