@@ -415,6 +415,14 @@ sudo systemctl restart httpd
           name: apache2
 
 ---
-
+```
 Restart apache several time issue cleared
+
+### INVERNTORY ...
+------------------
+* create inventory & inverntory.yaml files
+* ini formate & yaml formate
+
+
+
 

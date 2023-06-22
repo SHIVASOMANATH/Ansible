@@ -1,0 +1,16 @@
+---
+all:
+  children:
+    ubuntu:
+      hosts:
+        172.31.9.80:
+    redhat:
+      hosts:
+        172.31.13.7:
+    Webserver:
+      hosts:
+        172.31.9.80:
+        172.31.13.7:
+
+    
+    
