@@ -28,3 +28,4 @@
       - name: restart apache service
         ansible.builtin.systemd:
           name: apache2
+          state: restarted
