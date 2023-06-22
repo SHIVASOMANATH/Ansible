@@ -384,17 +384,15 @@ sudo systemctl restart httpd
 
 ```yaml
 ---
-  - name: install lamp server on ubuntu 22.04
+  - name: install lamp server on ubuntu
     hosts: all
     become: yes
     tasks:
       - name: install apache server
         ansible.builtin.apt:
-          - name: apache2
-            update_cache: true
-            state: present
-        notify:
-          - restart apache2
+          name: apache2
+          update_cache: true
+          state: present
       - name: install php packages
         ansible.builtin.apt:
           name:
@@ -406,14 +404,17 @@ sudo systemctl restart httpd
         notify:
           - restart apache2
       - name: create info.php page
-        ansible.builltn.copy:
-          content: '<?php phpinfo(); ?>' 
-          dest: /var/www/html/info.php 
+        ansible.builtin.copy:
+          content: '<?php phpinfo(); ?>'
+          dest: /var/www/html/info.php
         notify:
           - restart apache2
-        handlers:  
+    handlers:
       - name: restart apache service
         ansible.builtin.systemd:
-        name: apache2
-        state: restarted     
-        
+          name: apache2
+
+---
+
+Restart apache several time issue cleared
+
