@@ -31,8 +31,6 @@
       ansible.builtin.copy:
         content: '<?php phpinfo(); ?>' 
         dest: /var/www/html/info.php
-      notify:
-        - restart httpd
   handlers:      
     - name: restart httpd service 
       ansible.builtin.systemd:
