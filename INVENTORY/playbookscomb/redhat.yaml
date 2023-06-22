@@ -25,6 +25,7 @@
     - name: start httpd service and enable
       ansible.builtin.systemd:
         name: httpd
+        enabled: yes
         state: started 
       notify:
         - restart httpd
