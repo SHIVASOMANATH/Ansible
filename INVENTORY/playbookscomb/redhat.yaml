@@ -27,9 +27,9 @@
         name: httpd
         enabled: yes
         state: started 
-    - name: create info.php page
+    - name: copy info.php page
       ansible.builtin.copy:
-        content: '<?php phpinfo(); ?>' 
+        src: info.php
         dest: /var/www/html/info.php
       notify:
         - restart httpd
