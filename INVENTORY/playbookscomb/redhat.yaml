@@ -13,8 +13,6 @@
         name: httpd
         enabled: true
         state: started
-      notify:
-        - restart httpd
     - name: install php server
       ansible.builtin.yum:
         name: php
