@@ -6,9 +6,9 @@
       info_php_path: /var/www/html/info.php
     tasks:
       - name: install apache 
-        ansible.builtin.apt:
         ansible.builtin.package :
           name: "{{ package_name }}"
+          update_cache=
           state: present
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install php packages
@@ -29,7 +29,6 @@
           - restart apache
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install apache on server
-        ansible.builtin.yum:
         ansible.builtin.package:
           name: "{{ package_name }}"        
           state: present
