@@ -2,11 +2,13 @@
   - name: install lamp server on ubuntu & Redhat
     hosts: all
     become: yes
+    vars:
+      info_php_path: /var/www/html/info.php
     tasks:
       - name: install apache server
-        ansible.builtin.apt:
-          name: apache2
-          update_cache: true
+        ansible.builtin.yum:
+        ansible.builtin.package:
+          name: "{{ package_name }}"
           state: present
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install php packages
@@ -22,18 +24,19 @@
       - name: create info.php page
         ansible.builtin.copy:
           content: '<?php phpinfo(); ?>'
-          dest: /var/www/html/info.php
+          dest: "{{ info_php_path }}"
         notify:
           - restart apache2
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install httpd on server
         ansible.builtin.yum:
-          name: httpd
+        ansible.builtin.package:
+          name: "{{ package_name }}"        
           state: present
         when: ansible_facts['os_family'] == 'RedHat'
       - name: start httpd service and enable
         ansible.builtin.systemd:
-          name: httpd
+          name: "{{ package_name }}"  
           enabled: true
           state: started
         when: ansible_facts['os_family'] == 'RedHat'
@@ -47,16 +50,12 @@
       - name: create info.php page
         ansible.builtin.copy:
           content: '<?php phpinfo(); ?>' 
-          dest: /var/www/html/info.php
+          dest: "{{ info_php_path }}"
         notify:
           - restart httpd
         when: ansible_facts['os_family'] == 'RedHat'
     handlers:      
-      - name: restart httpd service 
+      - name: restart apache service 
         ansible.builtin.systemd:
-          name: httpd
-          state: restarted
-      - name: restart apache2
-        ansible.builtin.systemd:
-          name: apache2
+          name: "{{ package_name }}"
           state: restarted
