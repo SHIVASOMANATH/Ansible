@@ -5,7 +5,7 @@
     vars:
       info_php_path: /var/www/html/info.php
     tasks:
-      - name: install apache server
+      - name: install apache 
         ansible.builtin.yum:
         ansible.builtin.package:
           name: "{{ package_name }}"
@@ -19,14 +19,14 @@
             - php-mysql
           state: present
         notify:
-          - restart apache2
+          - restart apache
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: create info.php page
         ansible.builtin.copy:
           content: '<?php phpinfo(); ?>'
           dest: "{{ info_php_path }}"
         notify:
-          - restart apache2
+          - restart apache
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install httpd on server
         ansible.builtin.yum:
@@ -45,17 +45,17 @@
           name: php
           state: present
         notify:
-          - restart httpd
+          - restart apache
         when: ansible_facts['os_family'] == 'RedHat'
       - name: create info.php page
         ansible.builtin.copy:
           content: '<?php phpinfo(); ?>' 
           dest: "{{ info_php_path }}"
         notify:
-          - restart httpd
+          - restart apache
         when: ansible_facts['os_family'] == 'RedHat'
     handlers:      
-      - name: restart apache service 
+      - name: restart apache 
         ansible.builtin.systemd:
           name: "{{ package_name }}"
           state: restarted
