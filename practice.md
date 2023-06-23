@@ -492,7 +492,7 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 ----------------
 
 #### FACTS 
-----------
+-----------
 ```
 * command for Facts through using ip 
 * ansible -m 'setup' -i '172.31.13.7, ' all 
@@ -513,10 +513,11 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
       - name: os family details
         ansible.builtin.debug:
           msg: "family: {{ ansible_facts['os_family'] }} distrubution: {{ ansible_facts['distributions'] }}"
-      - name: print network details
-        ansible.builtin.debug:
-          msg: " ip: {{ ansible_facts['ipv4']['address'] }}"
+
 ```
+"{{ ansible_facts['os_family'] }}"
+
+
 ```yaml
 ---
   - name: facts understanding
@@ -536,7 +537,7 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 -----------------------------------------------
 ```yaml
 ---
-  - name: install lamp server on ubuntu & Redhat
+  - name: install lamp server on ubuntu & Redhat using facts
     hosts: all
     become: yes
     tasks:
@@ -607,11 +608,11 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 ![preview](/Ansible/images/21.PNG)
 
 
-### Combined Yaml....
+### Combined Yaml.... variables
 --------------------
 
 Ansible variables:
-* varibles written in host file
+* varibles written in host file in inventory
 * varibles in generic packages manual varibles and written
 * replacing application installation formates apt /yum
 * 
