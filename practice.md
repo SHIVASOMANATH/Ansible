@@ -462,7 +462,35 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 #### FACTS 
 ----------
 ```
-ansible -m 'setup' -i '172.31.13.7, ' all 
-
-ram
+* command for Facts through using ip 
+* ansible -m 'setup' -i '172.31.13.7, ' all 
+ 
+ * argumets : filter
+ command: ansible -m 'setup' -i '172.31.9.80,localhost, ' -a 'filter=*os' all
+ ```
+ ```yaml
+ --- 
+  - name: facts understanding
+    become: false 
+    hosts: all
+    tasks:
+      - name: os family details
+        ansible.builtin.debug:
+          msg: "family: {{ ansible_facts['os_family'] }} distrubution: {{ ansible_facts['distributions'] }}"
+      - name: print network details
+        ansible.builtin.debug:
+          msg: " ip: {{ ansible_facts['ipv4']['address'] }}"
+```
+```yaml
+---
+  - name: facts understanding
+    become: false 
+    hosts: all
+    tasks:
+      - name: os family details
+        ansible.builtin.debug:
+          var: ansible_facts['default_ipv4'] 
+      - name: same information
+        ansible.builtin.debug:
+          var: ansible_default_ipv4
 ```
