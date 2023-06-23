@@ -154,8 +154,8 @@ playbooks are YAMl files.
 * Service account : Account is given to admin which is manage and all of the users login and do the changes over user system
 
 
-
 * user name and password is not a good idea
+
 
 ### Ansible installation 
 
@@ -182,6 +182,9 @@ steps
 * shiva@asnible:~$ ansible --version
 * ansible 2.10.8
 ```
+![preview](/Ansible/images/1.PNG)
+
+![preview](/Ansible/images/2.PNG)
 
 ``` 
 vi hosts : edit ip adress and names 
@@ -220,6 +223,8 @@ sample playbook:
         state: present
         update_cache: yes
 ```
+![preview](/Ansible/images/3.PNG)
+
 check tree in node 1-- 
 
 Activity1:
@@ -255,6 +260,7 @@ Installation apache server
         state: present
 ---      
 ```
+
 ```
  vi playbooks/apach2.yaml
  ansible-playbook -i inventory/hosts playbooks/apach2.yaml \
@@ -306,6 +312,10 @@ history
         name: apache2
         state: restarted
 ```
+![preview](/Ansible/images/5.PNG)
+
+![preview](/Ansible/images/6.PNG)
+
 ### Manual steps for Lamp in redhat:
 -----------------------------------
 
@@ -379,7 +389,14 @@ sudo systemctl restart httpd
 ```
 ' ansible-playbook -i inventory/hosts 
 --syntax-check playbooks/lamp.yaml '
+
+![preview](/Ansible/images/7.PNG)
+
+![preview](/Ansible/images/10.PNG)
+
+
 ### Handlers:
+-------
 
 --- notify:
      before execution of handlers
@@ -416,9 +433,9 @@ sudo systemctl restart httpd
       - name: restart apache service
         ansible.builtin.systemd:
           name: apache2
-
----
 ```
+![preview](/Ansible/images/11.PNG)
+
 Restart apache several time issue cleared
 
 ### INVERNTORY ...
@@ -426,14 +443,20 @@ Restart apache several time issue cleared
 * create inventory & ini files formate 
 ```
 ansible-playbook -i inventory/hosts.yaml playbookscomb/lamp --list-host
+```
+![preview](/Ansible/images/13.PNG)
+```
 ansible-playbook -i inventory/hosts.yaml playbookscomb/lamp
 ```
 * INI formate &  & inverntory.yaml files formate
-
 ```
 ansible-playbook -i inventory/hosts playbookscomb/lamp --list-host
 ansible-playbook -i inventory/hosts playbookscomb/lamp
 ```
+![preview](/Ansible/images/12.PNG)
+
+![preview](/Ansible/images/14.PNG)
+
 ### playbooks to install the following on ubuntu 22.04 Manual
 >>>	java 17 >>>
 ```
@@ -443,6 +466,8 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 * java -version
 * history
 ```
+![preview](/Ansible/images/15.PNG)
+
 *   Play book for Java17
 -------------------------
 ```yaml
@@ -459,6 +484,13 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
           update_cache: yes
           state: present  
 ```
+
+![preview](/Ansible/images/16.PNG)
+
+
+### Date 23-06-203
+----------------
+
 #### FACTS 
 ----------
 ```
@@ -468,6 +500,10 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
  * argumets : filter
  command: ansible -m 'setup' -i '172.31.9.80,localhost, ' -a 'filter=*os' all
  ```
+ ![preview](/Ansible/images/17.PNG)
+
+ ![preview](/Ansible/images/18.PNG)
+
  ```yaml
  --- 
   - name: facts understanding
@@ -494,6 +530,8 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
         ansible.builtin.debug:
           var: ansible_default_ipv4
 ```
+![preview](/Ansible/images/19.PNG)
+
 ### Combined yaml by using Ansible_Facts... (os_family)
 -----------------------------------------------
 ```yaml
@@ -560,7 +598,14 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
           name: apache2
           state: restarted
 ```
+![preview](/Ansible/images/20.PNG)
+
 ###  verbosity levels of execution i.e -v, -vv , -vvv ..
 ----------------------------------------------------
  those are use full understanding the process if we required the installations more information
  
+![preview](/Ansible/images/21.PNG)
+
+
+
+
