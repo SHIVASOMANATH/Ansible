@@ -607,5 +607,17 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 ![preview](/Ansible/images/21.PNG)
 
 
+### Combined Yaml....
+--------------------
+
+Ansible variables:
+* varibles written in host file
+* varibles in generic packages manual varibles and written
+* replacing application installation formates apt /yum
+* 
+
+
+![preview](/Ansible/images/22.PNG)
+
 
 
