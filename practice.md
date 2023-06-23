@@ -560,3 +560,7 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
           name: apache2
           state: restarted
 ```
+###  verbosity levels of execution i.e -v, -vv , -vvv ..
+----------------------------------------------------
+ those are use full understanding the process if we required the installations more information
+ 
