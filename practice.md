@@ -615,12 +615,17 @@ Ansible variables:
 * varibles written in host file in inventory
 * varibles in generic packages manual varibles and written
 * replacing application installation formates apt /yum
-* looping ansible 
+
+Refer in varible.yaml
+![preview](/Ansible/images/22.PNG)
+
+* looping ansible
+Refer in loopitem.yaml
+![preview](/Ansible/images/23.PNG)
+![preview](/Ansible/images/24.PNG)
+
 * host vars & group vars
 * unsupported os 
-
-
-![preview](/Ansible/images/22.PNG)
 
 
 
