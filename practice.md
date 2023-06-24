@@ -614,21 +614,55 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 Ansible variables:
 * varibles written in host file in inventory
 * varibles in generic packages manual varibles and written
-* replacing application installation formates apt /yum
+   -  replacing application installation formates apt /yum
 
 Refer in varible.yaml
+ansible varibles:....
+```yaml
+---
+[ubuntu]
+172.31.9.80
+172.31.9.80 package_name=apache2 
+php_packages='["php","libapache2-mod-php","php-mysql"]'
+
+[redhat]
+172.31.13.7
+172.31.13.7 package_name=httpd 
+php_packages='["php"]'
+
+[Webserver]
+172.31.9.80
+172.31.13.7
+
+```
+ansible.builtin.package : generic packages instaead apt //yum//etc..
+     "{{ package_name }}"
+
 ![preview](/Ansible/images/22.PNG)
 
 * looping ansible
 Refer in loopitem.yaml
+```yaml
+ansible.builtin.package:
+  name: "{{ item }}"
+  state: present
+  loop: "{{ php_packages }}"
+```
 ![preview](/Ansible/images/23.PNG)
 ![preview](/Ansible/images/24.PNG)
 
 * host vars & group vars
 
 Refer in Files group_vars host_vars &&& groupvaribles.yaml
+![preview](/Ansible/images/25.PNG)
+![preview](/Ansible/images/26.PNG)
+![preview](/Ansible/images/27.PNG)
+![preview](/Ansible/images/28.PNG)
+![preview](/Ansible/images/29.PNG)
+![preview](/Ansible/images/30.PNG)
 
-* unsupported os 
+* unsupported os informtaion 
 
+Module: `ansible.builtin.fail module`
 
 
