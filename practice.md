@@ -625,6 +625,9 @@ Refer in loopitem.yaml
 ![preview](/Ansible/images/24.PNG)
 
 * host vars & group vars
+
+Refer in Files group_vars host_vars &&& groupvaribles.yaml
+
 * unsupported os 
 
 
