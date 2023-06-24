@@ -1,6 +1,6 @@
 ---
   - name: install lamp server on ubuntu & Redhat
-    hosts: webserver.yaml
+    hosts: webserver
     become: yes
     tasks:
       - name: install apache 
