@@ -1,0 +1,50 @@
+---
+  - name: install lamp server on ubuntu & Redhat
+    hosts: webserver.yaml
+    become: yes
+    tasks:
+      - name: install apache 
+        ansible.builtin.package :
+          name: "{{ package_name }}"
+          state: present
+        when: ansible_facts['os_family'] == 'Ubuntu'
+      - name: install php packages
+        ansible.builtin.apt:
+          name:
+            - php
+            - libapache2-mod-phpx
+            - php-mysql
+          state: present
+        notify:
+          - restart apache
+        when: ansible_facts['os_family'] == 'Ubuntu'
+      - name: create info.php page
+        ansible.builtin.copy:
+          content: '<?php phpinfo(); ?>'
+          dest: "{{ info_php_path }}"
+        notify:
+          - restart apache
+        when: ansible_facts['os_family'] == 'Ubuntu'
+      - name: install apache on server
+        ansible.builtin.package:
+          name: "{{ package_name }}"        
+          state: present
+        when: ansible_facts['os_family'] == 'RedHat'
+      - name: start apache service and enable
+        ansible.builtin.systemd:
+          name: "{{ package_name }}"  
+          enabled: true
+          state: started
+        when: ansible_facts['os_family'] == 'RedHat'
+      - name: install php server
+        ansible.builtin.yum:
+          name: php
+          state: present
+        notify:
+          - restart apache
+        when: ansible_facts['os_family'] == 'RedHat'
+    handlers:      
+      - name: restart apache 
+        ansible.builtin.systemd:
+          name: "{{ package_name }}"
+          state: restarted
