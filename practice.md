@@ -658,11 +658,62 @@ Refer in Files group_vars host_vars &&& groupvaribles.yaml
 ![preview](/Ansible/images/26.PNG)
 ![preview](/Ansible/images/27.PNG)
 ![preview](/Ansible/images/28.PNG)
-![preview](/Ansible/images/29.PNG)
-![preview](/Ansible/images/30.PNG)
+
 
 * unsupported os informtaion 
 
 Module: `ansible.builtin.fail module`
+```yaml
+    - name: check playbook is being executed on supported os
+      ansible.builtin.fail:
+        msg: "This playbook is designed for both ubuntu and redhat"
+      when: ansible_facts['distribution'] != "Ubuntu" and ansible_facts['distribution'] != "RedHat"
+```
+* Debug modules 
+  explaining msgs of structure & verbastity
 
+### Install Tomcat on ubuntu Manual
+-----------------------------------
+* sudo apt update
+* sudo apt install openjdk-11-jdk
+* java -version
+* VERSION=10.1.9
+* wget https://www-eu.apache.org/dist/tomcat/tomcat-10/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz -P /tmp
+* sudo tar -xf /tmp/apache-tomcat-${VERSION}.tar.gz -C /opt/tomcat/
+* sudo ln -s /opt/tomcat/apache-tomcat-${VERSION} /opt/tomcat/latest
+* sudo ls -al /opt/tomcat/
+* sudo chown -R tomcat: /opt/tomcat
+* sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+* sudo nano /etc/systemd/system/tomcat.service
+```
+[Unit]
+Description=Tomcat 10 servlet container
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+
+Environment="CATALINA_BASE=/opt/tomcat/latest"
+Environment="CATALINA_HOME=/opt/tomcat/latest"
+Environment="CATALINA_PID=/opt/tomcat/latest/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+ExecStart=/opt/tomcat/latest/bin/startup.sh
+ExecStop=/opt/tomcat/latest/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+* sudo systemctl daemon-reload
+* sudo systemctl enable --now tomcat
+* sudo systemctl status tomcat
+
+![preview](/Ansible/images/29.PNG)
+![preview](/Ansible/images/30.PNG)
 
