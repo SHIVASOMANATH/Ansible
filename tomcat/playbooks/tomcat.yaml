@@ -1,7 +1,7 @@
 ---
   - name: install tomcat on ubuntu
     become: true
-    hosts: all
+    hosts: tomcat
     tasks:
       - name: check playbook is being executed on supported os
         ansible.builtin.fail:
@@ -9,7 +9,7 @@
         when: ansible_facts['distribution'] != "Ubuntu"
       - name: install java11
         ansible.builtin.apt:
-          name: openjdk-11-jdk
+          name: "{{ java_package }}"
           update_cache: true
           state: present
       - name: download tomcat file 

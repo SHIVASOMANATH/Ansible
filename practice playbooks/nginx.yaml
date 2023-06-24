@@ -1,0 +1,10 @@
+---
+  - name: dotnet 7 install on ubuntu
+    become: true
+    hosts: all
+    tasks: 
+      - name: install "dotnet7"
+        ansible.builtin.apt:
+          name: dotnet-sdk-7.0
+          update_cache: true
+          state: present

@@ -457,7 +457,7 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 
 ![preview](/Ansible/images/14.PNG)
 
-### playbooks to install the following on ubuntu 22.04 Manual
+### playbooks & install the following on ubuntu 22.04 Manual
 >>>	java 17 >>>
 ```
 * sudo apt update
@@ -487,6 +487,25 @@ ansible-playbook -i inventory/hosts playbookscomb/lamp
 
 ![preview](/Ansible/images/16.PNG)
 
+### playbooks & install the following on dotnet 7 Manual
+
+* `sudo apt-get update `
+* `sudo apt-get install -y aspnetcore-runtime-7.0`
+
+*   Play book for dotnet7:
+-------------------------
+```yaml
+---
+  - name: dotnet 7 install on ubuntu
+    become: true
+    hosts: all
+    tasks: 
+      - name: install "dotnet7"
+        ansible.builtin.apt:
+          name: dotnet-sdk-7.0
+          update_cache: true
+          state: present
+```
 
 ### Date 23-06-203
 ----------------
