@@ -11,12 +11,10 @@
           state: present
         when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install php packages
-        ansible.builtin.apt:
-          name:
-            - php
-            - libapache2-mod-phpx
-            - php-mysql
+        ansible.builtin.package:
+          name: "{{ item }}"
           state: present
+          loop: "{{ php_packages }}"
         notify:
           - restart apache
         when: ansible_facts['os_family'] == 'Ubuntu'
@@ -26,7 +24,6 @@
           dest: "{{ info_php_path }}"
         notify:
           - restart apache
-        when: ansible_facts['os_family'] == 'Ubuntu'
       - name: install apache on server
         ansible.builtin.package:
           name: "{{ package_name }}"        
@@ -39,12 +36,6 @@
           state: started
         when: ansible_facts['os_family'] == 'RedHat'
       - name: install php server
-        ansible.builtin.yum:
-          name: php
-          state: present
-        notify:
-          - restart apache
-        when: ansible_facts['os_family'] == 'RedHat'
     handlers:      
       - name: restart apache 
         ansible.builtin.systemd:
