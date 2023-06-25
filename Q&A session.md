@@ -2,7 +2,7 @@
   - Continues Intrgration: The process which is maintaining streamline devolop and deployement that leads to more rapid repolyements
   - Continues Delivery: Devopler >> Code>> Build and Automation Server setting>> UAT >> Production
 ### 2. What is Configuration Management?
-  - Which is maintian desired state with small changes // When the bug is occured in diffrent environments in ansible execution we need to fix issue minimum downtime instead of fix the bug ,,we can roolback the changes 
+  - Which is maintian desired state with small changes // When the bug is occured in diffrent environments in ansible execution we need to fix issue minimum downtime instead of fix the bug ,we can roolback the changes 
 ### 3. How does Ansible work?
   - Multipieces together automation tool ..-- Modules --playbooks --plugins
   - modules -- a reusable, standalone script that Ansible runs on your behalf, either locally or remotely
@@ -75,4 +75,6 @@
 ### 24. Facts
   - Ansible playbook by default collects information about nodes where it is executing,we can use this with the help of variables 
 ### 25. Ansible Collections
-  - Ansible collections are distribution format which include roles and modules
+  - Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins. You can install and use collections through a distribution server, such as Ansible Galaxy, or a Pulp 3 Galaxy server.
+### 26. Template
+  - This module is part of ansible-core and included in all Ansible installations. In most cases, you can use the short module name template even without specifying the collections: keyword. However, we recommend you use the FQCN for easy linking to the module documentation and to avoid conflicting with other collections that may have the same module name. 
