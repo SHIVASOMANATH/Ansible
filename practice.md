@@ -734,6 +734,7 @@ WantedBy=multi-user.target
 * sudo systemctl daemon-reload
 * sudo systemctl enable --now tomcat
 * sudo systemctl status tomcat
+* 
 
 ![preview](/Ansible/images/29.PNG)
 ![preview](/Ansible/images/30.PNG)
