@@ -1,0 +1,31 @@
+---
+  - name: 
+    become: yes
+    hosts: all
+    tasks: 
+      - name: aws configuration packages
+        ansible.builtin.apt:
+          name: 
+            - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            - unzip awscliv2.zip
+            - sudo ./aws/install
+          update_cache: yes
+          state: present
+      - name: kubectl configuration
+          ansible.builtin.apt:
+          name: 
+            - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+            - echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+            - sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+            - aws sts get-caller-identity
+            - aws configure
+                         
+             AWS Access Key ID [None]: AKIAU5SYUMQNIC3GOYCU
+             AWS Secret Access Key [None]: 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
+             Default region name [None]:
+             Default output format [None]:
+           update_cache: yes
+          state: present 
+      - name: pass ur credentials secrets
+      - name: call roles
+      - name: helm 

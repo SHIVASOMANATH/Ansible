@@ -2,7 +2,7 @@
   - Continues Intrgration: The process which is maintaining streamline devolop and deployement that leads to more rapid repolyements
   - Continues Delivery: Devopler >> Code>> Build and Automation Server setting>> UAT >> Production
 ### 2. What is Configuration Management?
-  - Which is maintian desired state with small changes // When the bug is occured in diffrent environments in ansible execution we need to fix issue minimum downtime instead of fix the bug ,we can roolback the changes 
+  - The process which is maintian desired state with small changes // When the bug is occured in diffrent environments in ansible execution we need to fix issue minimum downtime instead of fix the bug ,we can roolback the changes 
 ### 3. How does Ansible work?
   - Multipieces together automation tool ..-- Modules --playbooks --plugins
   - modules -- a reusable, standalone script that Ansible runs on your behalf, either locally or remotely
