@@ -5,7 +5,7 @@
   - Which is maintian desired state with small changes // When the bug is occured in diffrent environments in ansible execution we need to fix issue minimum downtime instead of fix the bug ,,we can roolback the changes 
 ### 3. How does Ansible work?
   - Multipieces together automation tool ..-- Modules --playbooks --plugins
-  - modules -- those are using for build tasks
+  - modules -- a reusable, standalone script that Ansible runs on your behalf, either locally or remotely
   - playbooks -- steps need to complete the process //group of tasks
   - plugins -- special kinds of modules that run on the main control machine for logging purposes. 
 ### 4. What are the features of Ansible?
@@ -16,16 +16,16 @@
   - Setup 
   - Manage Inventory
 ### 5. Explain Infrastructure as Code?
-  -  More organized way of managing the infraIaC improves speed, consistency, and accountability.
+  -  More organized way of managing the improves speed, consistency, and accountability.
 
 ### 6. What is Ansible Galaxy?
   - Galaxy is a repository of Ansible
   - directly dropped into playbooks for execution.
   - distribution of packages containing roles, plugins, and modules also known as collection
   - init, build, install, etc like an ansible-galaxy command.
-
+ 
 ### 7. Explain Ansible modules in detail?
-  -  scripts which run specific tasks idempotently.
+  -  scripts which run specific tasks
   -  2 types of modules in Ansible
   - Core Modules: Ansible team is responsible for maintaining these modules thus these come with Ansible itself
   - Extras Modules: Ansible community maintains these modules so, for now, these are being shipped with Ansible
@@ -68,5 +68,11 @@
   - Ansible register is used to store the output from task execution in a variable. 
 ### 21. Conclusion
   - Ansible is a great tool for automating IT tasks and it is widely used in industries, thus every software developer or someone in the DevOps team should know the basics
-
-
+### 22. Ansibel Rools
+  - Roles let you automatically load related vars, files, tasks, handlers, and other Ansible artifacts based on a known file structure. After you group your content in roles, you can easily reuse them and share them with other users.
+### 23. Artifacts
+  - Ansible offers four distributed, re-usable artifacts: variables files, task files, playbooks, and roles.
+### 24. Facts
+  - Ansible playbook by default collects information about nodes where it is executing,we can use this with the help of variables 
+### 25. Ansible Collections
+  - Ansible collections are distribution format which include roles and modules
