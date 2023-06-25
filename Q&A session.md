@@ -1,5 +1,5 @@
 ### 1. What is CI/CD?
-  - Continues Intrgration: The process which is maintaining streamling devolop and deployement that leads to more rapid repolyements
+  - Continues Intrgration: The process which is maintaining streamline devolop and deployement that leads to more rapid repolyements
   - Continues Delivery: Devopler >> Code>> Build and Automation Server setting>> UAT >> Production
 ### 2. What is Configuration Management?
   - Which is maintian desired state with small changes // When the bug is occured in diffrent environments in ansible execution we need to fix issue minimum downtime instead of fix the bug ,,we can roolback the changes 
