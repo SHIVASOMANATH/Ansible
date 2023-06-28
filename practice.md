@@ -743,5 +743,7 @@ wget in ansible
 string interpolletion in ansible
 tar in unsible
 simlink in ansible
+jinja templates
+ansible templates
 
 
