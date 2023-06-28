@@ -32,4 +32,8 @@
           src: "/tmp/apache-tomcat-{{ tomcat_version }}.tar.gz" 
           dest: "{{ homedir }}"
           remote_src: yes 
-        
+      - name: create a symblic link
+        ansible.builtin.file:
+          src: "{{ homedir }}/apache-tomcat-{{ tomcat_version }}"
+          dest: "{{ homedir }}/latest"
+          state: link

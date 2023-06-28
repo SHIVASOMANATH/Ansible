@@ -741,4 +741,7 @@ WantedBy=multi-user.target
 
 wget in ansible  
 string interpolletion in ansible
+tar in unsible
+simlink in ansible
+
 
