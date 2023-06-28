@@ -739,3 +739,6 @@ WantedBy=multi-user.target
 ![preview](/Ansible/images/29.PNG)
 ![preview](/Ansible/images/30.PNG)
 
+wget in ansible  
+string interpolletion in ansible
+
