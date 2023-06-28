@@ -37,10 +37,13 @@
           src: "{{ homedir }}/apache-tomcat-{{ tomcat_version }}"
           dest: "{{ homedir }}/latest"
           state: link
-      - name: change ownership to tomcat
+      - name: change ownership to tomcat folder level
         ansible.builtin.file:
           path: "{{ homedir }}"
           state: directory
           recurse: yes
           owner: "{{ user }}"
           group: "{{ group }}"
+      - name: Add execute permisison fo shell script
+        ansible.builtin.shell:
+          cmd: "chmod +x {{ homedir }}/latest/bin/*.sh"
