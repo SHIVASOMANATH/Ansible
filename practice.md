@@ -698,6 +698,7 @@ Module: `ansible.builtin.fail module`
 * sudo apt update
 * sudo apt install openjdk-11-jdk
 * java -version
+* sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 * VERSION=10.1.9
 * wget https://www-eu.apache.org/dist/tomcat/tomcat-10/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz -P /tmp
 * sudo tar -xf /tmp/apache-tomcat-${VERSION}.tar.gz -C /opt/tomcat/
@@ -734,7 +735,6 @@ WantedBy=multi-user.target
 * sudo systemctl daemon-reload
 * sudo systemctl enable --now tomcat
 * sudo systemctl status tomcat
-* 
 
 ![preview](/Ansible/images/29.PNG)
 ![preview](/Ansible/images/30.PNG)

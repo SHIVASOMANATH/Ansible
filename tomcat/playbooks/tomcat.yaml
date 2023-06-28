@@ -5,11 +5,22 @@
     tasks:
       - name: check playbook is being executed on supported os
         ansible.builtin.fail:
-          msg: "This playbook is designed for both ubuntu only"
+          msg: "This playbook is designed for ubuntu only"
         when: ansible_facts['distribution'] != "Ubuntu"
       - name: install java11
         ansible.builtin.apt:
           name: "{{ java_package }}"
           update_cache: true
           state: present
-      - name: download tomcat file 
+      - name: create group
+        ansible.builtin.group:
+          name: "{{ group }}"
+          state: present
+      - name: create user
+        ansible.builtin.user:
+          name: "{{ user }}"
+          create_home: yes
+          home: "{{ homedir }}"
+          shell: "{{ shell }}"
+          group: "{{ group }}"
+          
