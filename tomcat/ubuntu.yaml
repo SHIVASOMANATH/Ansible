@@ -71,5 +71,5 @@
           group: "{{ group }}"
       - name: Add execute permissions for shell scripts
         ansible.builtin.shell:
-          cmd: "chmod +x {{ homedir }}/latest/bin/*.sh
+          cmd: "chmod +x {{ homedir }}/latest/bin/*.sh"
 
