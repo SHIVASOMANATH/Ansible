@@ -16,11 +16,10 @@
         ansible.builtin.group:
           name: "{{ group }}"
           state: present
-      - name: create user
+      - name: create user tomcat
         ansible.builtin.user:
           name: "{{ user }}"
           create_home: yes
           home: "{{ homedir }}"
           shell: "{{ shell }}"
           group: "{{ group }}"
-          
