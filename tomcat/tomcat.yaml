@@ -7,7 +7,7 @@
         ansible.builtin.fail:
           msg: "This playbook is designed for ubuntu only"
         when: ansible_facts['distribution'] != "Ubuntu"
-      - name: install java11
+      - name: install java
         ansible.builtin.apt:
           name: "{{ java_package }}"
           update_cache: true
