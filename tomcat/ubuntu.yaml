@@ -56,11 +56,11 @@
       - name: ensure tomcat is enable and running
         ansible.builtin.systemd:
           name: tomcat
-          enabled: true
+          enabled: yes
           state: started
     handlers:
       - name: reload daemon
         ansible.builtin.systemd:
-          darmon_reload: yes 
+          daemon_reload: yes 
 
 
