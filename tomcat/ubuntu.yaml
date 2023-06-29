@@ -29,7 +29,7 @@
           dest: "/tmp/apache-tomcat-{{ tomcat_version }}.tar.gz"
       - name: comand for extract allready exists
         ansible.builtin.stat:
-          path:  "{{ homedir }}/apache-tomcat-{{ tomcat_version }}/LICENCE"
+          path:  "{{ homedir }}/apache-tomcat-{{ tomcat_version }}/LICENSE"
         register: license_info
       - name: extract tomcat
         ansible.builtin.unarchive:  
