@@ -37,7 +37,7 @@
           dest: "{{ homedir }}"
           remote_src: yes 
         when: not licence_info.stat.exists
-      - name: create a symblic link
+      - name: create a sym link
         ansible.builtin.file:
           src: "{{ homedir }}/apache-tomcat-{{ tomcat_version }}"
           dest: "{{ homedir }}/latest"
