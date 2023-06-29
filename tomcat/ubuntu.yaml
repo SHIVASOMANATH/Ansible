@@ -1,7 +1,7 @@
 ---
   - name: install tomcat on ubuntu
-    become: true
     hosts: tomcat
+    become: yes
     tasks:
       - name: check playbook is being executed on supported os
         ansible.builtin.fail:
@@ -10,7 +10,7 @@
       - name: install java
         ansible.builtin.apt:
           name: "{{ java_package }}"
-          update_cache: true
+          update_cache: yes
           state: present
       - name: create group
         ansible.builtin.group:
@@ -31,7 +31,7 @@
         ansible.builtin.stat:
           path:  "{{ homedir }}/apache-tomcat-{{ tomcat_version }}/LICENCE"
         register: license_info
-      - name: extract the tomcat
+      - name: extract tomcat
         ansible.builtin.unarchive:  
           src: "/tmp/apache-tomcat-{{ tomcat_version }}.tar.gz" 
           dest: "{{ homedir }}"
