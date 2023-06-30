@@ -87,3 +87,10 @@
  - Ansible uses variables to manage differences between systems. With Ansible, you can execute tasks and playbooks on multiple different systems with a single command. To represent the variations among those different systems, you can create variables with standard YAML syntax, including lists and dictionaries. 
 ### 30.Ansible Environmental Varible
  Ansible Environment variables are used to set the environment variable for action on the remote host using the environment keyword, which can be set at the playbook or task level and doesn't affect the Ansible configuration file or the environment set for the user
+### when should use test playbooks..rools
+### ansible ad-hoc 
+### what are call back plugins
+### how to automate pw in the playbooks
+### Ansible Language
+### varibles
+### 
