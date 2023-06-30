@@ -93,4 +93,15 @@
 ### how to automate pw in the playbooks
 ### Ansible Language
 ### varibles
+### Ansible limitations
+### what data base dose by using ansible
+### Delegating tasks: 
+ - By default Ansible gathers facts and executes all tasks on the machines that match the hosts line of your    playbook. This page shows you how to delegate tasks to a different machine or group, delegate facts to specific machines or groups, or run an entire playbook locally. U
+### Is there a web interface  restapi/etc
+### how to keep secrest data
+    using valut in playbooks we can 
+### when should use curlybase
+### dynamic varibles
+### ansible rool different from the playbook
+### Handler with multiple task
 ### 
