@@ -47,10 +47,10 @@
           - Add execute permissions for shell scripts
       - name: Flush handlers
         meta: flush_handlers
-      - name: copy the service file 
       - name: Add execute permissions for shell scripts
         ansible.builtin.shell:
           cmd: "chmod -R +x {{ homedir }}/latest/bin/*.sh"
+      - name: copy the service file 
         ansible.builtin.template:
           src: tomcat.service.j2
           dest: /etc/systemd/system/tomcat.service
