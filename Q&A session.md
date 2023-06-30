@@ -13,8 +13,9 @@
   - Python 
   - SSH 
   - Push architecture
-  - Setup 
+  - Setup easy
   - Manage Inventory
+
 ### 5. Explain Infrastructure as Code?
   -  More organized way of managing the improves speed, consistency, and accountability.
 
@@ -44,7 +45,7 @@
 ### 12. What is Ansible Vault?
   - Ansible vault is used to keep sensitive data such as passwords instead of placing it as plaintext in playbooks or roles.
 ### 13. What is the ad-hoc command in Ansible?
-  - Ad-hoc commands are like one-line playbooks to perform a specific task only.
+   - An Ansible ad hoc command uses the /usr/bin/ansible command-line tool to automate a single task on one or more managed nodes. ad hoc commands are quick and easy, but they are not reusable. So why learn about ad hoc commands? ad hoc commands demonstrate the simplicity and power of Ansible. The concepts you learn here will port over directly to the playbook language.
 ### 14. How do I access a variable name programmatically
   - Variable names can be built by adding strings together.
 ### 15. What is the difference between Ansible and Puppet?
@@ -54,7 +55,7 @@
 ### 16. What is Ansible Tower and what are its features?
   - Workflow Editor 
   - Real-Time Analysis 
-  - Audit Trail 
+  - Audit Trail   
   - Execute Commands Remotely 
 ### 17. What are handlers?
   - Handlers are like special tasks which only run if the Task contains a “notify” directive. 
@@ -78,3 +79,11 @@
   - Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins. You can install and use collections through a distribution server, such as Ansible Galaxy, or a Pulp 3 Galaxy server.
 ### 26. Template
   - This module is part of ansible-core and included in all Ansible installations. In most cases, you can use the short module name template even without specifying the collections: keyword. However, we recommend you use the FQCN for easy linking to the module documentation and to avoid conflicting with other collections that may have the same module name. 
+### 27. Ansible Plugings
+ - Plugins are pieces of code that augment Ansible's core functionality. Ansible uses a plugin architecture to enable a rich, flexible and expandable feature ..
+### 28. Ansible Blocks
+ - Blocks . Blocks create logical groups of tasks. Blocks also offer ways to handle task errors, similar to exception handling in many programming languages.
+### 29.Ansible Varibles
+ - Ansible uses variables to manage differences between systems. With Ansible, you can execute tasks and playbooks on multiple different systems with a single command. To represent the variations among those different systems, you can create variables with standard YAML syntax, including lists and dictionaries. 
+### 30.Ansible Environmental Varible
+ Ansible Environment variables are used to set the environment variable for action on the remote host using the environment keyword, which can be set at the playbook or task level and doesn't affect the Ansible configuration file or the environment set for the user
