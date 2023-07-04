@@ -9,12 +9,12 @@
   - playbooks -- steps need to complete the process //group of tasks
   - plugins -- special kinds of modules that run on the main control machine for logging purposes. 
 ### 4. What are the features of Ansible?
-  - Agentless
-  - Python 
-  - SSH 
+  - Agentless server
+  - Python based
+  - SSH working
   - Push architecture
   - Setup easy
-  - Manage Inventory
+  - Manage Inventory system
 
 ### 5. Explain Infrastructure as Code?
   -  More organized way of managing the improves speed, consistency, and accountability.
@@ -104,4 +104,6 @@
 ### dynamic varibles
 ### ansible rool different from the playbook
 ### Handler with multiple task
+### Basic syntax ansible
+### ansible scripts
 ### 
