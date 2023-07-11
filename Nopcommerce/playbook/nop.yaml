@@ -37,7 +37,7 @@
         dest: /var/www/nopCommerce/
         remote_src: yes
       when: 
-        msg: package-lock.json = no
+        msg: package-lock.json = available 
     - name: Create  bin folder logs folder 
       ansible.builtin.file:
         path:
