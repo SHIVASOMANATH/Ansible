@@ -45,3 +45,10 @@ WantedBy=multi-user.target
 - terrform
 - ansible
 - ./run.sh
+
+- Docker image build ---application image installed
+- kubernetes deploy
+- ansible automation --- manual installation
+- azure devops --pipeline
+- terrform - template ec2 ---cluster
+- jenkins --pipelline
