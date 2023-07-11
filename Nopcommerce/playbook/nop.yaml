@@ -36,6 +36,8 @@
         src: /var/www/nopCommerce/nopCommerce_4.60.3_NoSource_linux_x64.zip
         dest: /var/www/nopCommerce/
         remote_src: yes
+      handler:
+        Returned: always
     - name: Create  bin folder logs folder 
       ansible.builtin.file:
         path:
@@ -54,7 +56,7 @@
       ansible.builtin.copy:
         src: nopCommerce.service
         dest: /etc/systemd/system/nopCommerce.service
-    - name: Start service nopCommerce, if not started
+    - name: Start service nopCommerce if not started
       ansible.builtin.service:
         name: nopCommerce
         enabled: true
