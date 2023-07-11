@@ -35,7 +35,7 @@
       ansible.builtin.unarchive:
         src: /var/www/nopCommerce/nopCommerce_4.60.3_NoSource_linux_x64.zip
         dest: /var/www/nopCommerce/
-        remote_src: no
+        remote_src: yes
     - name: Create  bin folder logs folder 
       ansible.builtin.file:
         path:
