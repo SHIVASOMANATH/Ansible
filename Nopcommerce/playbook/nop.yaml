@@ -5,8 +5,8 @@
   tasks:
     - name: download debian packages
       ansible.builtin.get_url:
-      url: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
-      dest: /home/ubuntu
+        url: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+        dest: /home/ubuntu
     - name: install debian package 
       ansible.builtin.apt:
         deb: /home/ubuntu/packages-microsoft-prod.deb
